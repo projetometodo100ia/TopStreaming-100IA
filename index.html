@@ -1,1340 +1,957 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Streaming – Conteúdo de Qualidade, com um Preço que Cabe no seu Bolso!</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Streaming – Conteúdo de Qualidade, com um Preço que Cabe no seu Bolso!</title>
 
-    <!-- ====================================================
+<!-- ====================================================
      META PIXEL – substitua SEU_PIXEL_ID pelo seu ID
      Exemplo: 1234567890123456
      ==================================================== -->
-    <script>
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            }; if (!f._fbq) f._fbq = n;
-            n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
-        }(window,
-            document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', 'SEU_PIXEL_ID');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
-    <!-- FIM META PIXEL -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --red: #e50914;
-            --red-dark: #b20710;
-            --gold: #f5c518;
-            --white: #ffffff;
-            --black: #0a0a0a;
-            --dark: #111111;
-            --card: #1a0505;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: var(--black);
-            color: var(--white);
-            overflow-x: hidden;
-        }
-
-        /* ── TOPBAR ── */
-        .topbar {
-            background: var(--red);
-            text-align: center;
-            padding: 10px 16px;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: .5px;
-        }
-
-        .topbar a {
-            color: var(--white);
-            font-weight: 900;
-            text-decoration: underline;
-        }
-
-        /* ── HERO ── */
-        .hero {
-            position: relative;
-            min-height: 92vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            padding: 60px 6vw 80px;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: url('MOCKUP-1.webp') center/cover no-repeat;
-            filter: brightness(.25) blur(2px);
-            transform: scale(1.04);
-            z-index: 0;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, rgba(0, 0, 0, .92) 45%, transparent 100%);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 680px;
-        }
-
-        .logo-wrap {
-            margin-bottom: 28px;
-        }
-
-        .logo-wrap img {
-            width: 160px;
-        }
-
-        .logo-text {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 15px;
-            letter-spacing: 3px;
-            color: var(--red);
-            margin-top: 4px;
-        }
-
-        .hero h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(38px, 5.5vw, 72px);
-            line-height: 1.05;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 18px;
-        }
-
-        .hero h1 .highlight {
-            background: var(--red);
-            padding: 2px 10px;
-            display: inline;
-        }
-
-        .hero p {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #ddd;
-            font-weight: 600;
-            max-width: 560px;
-            margin-bottom: 36px;
-        }
-
-        .hero-mockup {
-            position: absolute;
-            right: -2%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 52%;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .hero-mockup img {
-            width: 100%;
-        }
-
-        /* ── CTA BUTTON ── */
-        .btn-cta {
-            display: inline-block;
-            background: var(--red);
-            color: var(--white);
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
-            letter-spacing: 2px;
-            padding: 18px 48px;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background .2s, transform .15s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-cta:hover {
-            background: var(--red-dark);
-            transform: translateY(-2px);
-        }
-
-        .btn-cta.dark {
-            background: #111;
-        }
-
-        .btn-cta.dark:hover {
-            background: #222;
-        }
-
-        /* ── STATS BANNER ── */
-        .stats {
-            background: var(--red);
-            display: flex;
-            justify-content: center;
-            gap: 0;
-            padding: 28px 0;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 0 48px;
-            border-right: 1px solid rgba(255, 255, 255, .3);
-        }
-
-        .stat:last-child {
-            border-right: none;
-        }
-
-        .stat-num {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 52px;
-            line-height: 1;
-            letter-spacing: 1px;
-        }
-
-        .stat-label {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: .5px;
-            opacity: .9;
-        }
-
-        /* ── SECTION TITLE ── */
-        .section-title {
-            text-align: center;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(28px, 4vw, 48px);
-            letter-spacing: 1px;
-            margin-bottom: 40px;
-        }
-
-        .section-title .tag {
-            background: var(--red);
-            padding: 2px 12px;
-            display: inline;
-        }
-
-        /* ── FILM STRIP MARQUEE ── */
-        .marquee-wrap {
-            overflow: hidden;
-            padding: 32px 0 8px;
-        }
-
-        .marquee {
-            display: flex;
-            gap: 12px;
-            animation: scroll 35s linear infinite;
-            width: max-content;
-        }
-
-        .marquee img {
-            height: 200px;
-            width: 135px;
-            object-fit: cover;
-            border-radius: 6px;
-            flex-shrink: 0;
-        }
-
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* ── VIDEO SECTION ── */
-        .video-section {
-            padding: 60px 6vw;
-            text-align: center;
-            background: var(--dark);
-        }
-
-        .video-wrapper {
-            max-width: 900px;
-            margin: 0 auto;
-            aspect-ratio: 16/9;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 2px solid #2a2a2a;
-        }
-
-        .video-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* ── CONTENT GRID ── */
-        .content-section {
-            padding: 70px 6vw;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .content-card {
-            background: #0f1520;
-            border: 1px solid #1e2a3a;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform .2s, border-color .2s;
-        }
-
-        .content-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--red);
-        }
-
-        .content-card-imgs {
-            position: relative;
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .content-card-imgs img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform .4s ease;
-        }
-
-        .content-card:hover .content-card-imgs img {
-            transform: scale(1.05);
-        }
-
-        .content-card-imgs img:not(:first-child) {
-            display: none;
-        }
-
-        .content-card-body {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .content-card-body h3 {
-            font-size: 17px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .content-card-body p {
-            font-size: 13px;
-            color: #aaa;
-            line-height: 1.6;
-        }
-
-        /* ── COMPARISON ── */
-        .comparison {
-            background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 100%);
-            padding: 70px 6vw;
-            text-align: center;
-        }
-
-        .comparison h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(28px, 4vw, 52px);
-            margin-bottom: 32px;
-            line-height: 1.2;
-        }
-
-        .platform-icons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 36px;
-        }
-
-        .platform-icons img {
-            height: 52px;
-            width: 52px;
-            border-radius: 12px;
-            object-fit: contain;
-            background: rgba(0, 0, 0, .3);
-            padding: 4px;
-        }
-
-        .price-highlight {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(30px, 4vw, 52px);
-            margin-bottom: 32px;
-        }
-
-        /* ── TESTIMONIALS ── */
-        .testimonials {
-            padding: 70px 6vw;
-            background: var(--dark);
-        }
-
-        .testi-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .testi-card img {
-            width: 100%;
-            border-radius: 14px;
-            border: 2px solid #2a2a2a;
-            display: block;
-        }
-
-        /* ── PLANS ── */
-        .plans-section {
-            padding: 70px 6vw;
-        }
-
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            max-width: 1100px;
-            margin: 0 auto 32px;
-        }
-
-        .plan-anual-wrap {
-            max-width: 340px;
-            margin: 0 auto 0;
-        }
-
-        .plan-card {
-            background: var(--card);
-            border: 1px solid #3a0a0a;
-            border-radius: 12px;
-            padding: 32px 28px;
-            display: flex;
-            flex-direction: column;
-            transition: transform .2s, border-color .2s;
-        }
-
-        .plan-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--red);
-        }
-
-        .plan-card.highlight {
-            border: 2px solid var(--red);
-            box-shadow: 0 0 30px rgba(229, 9, 20, .2);
-        }
-
-        .plan-label {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #aaa;
-            margin-bottom: 4px;
-        }
-
-        .plan-name {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 38px;
-            color: var(--red);
-            letter-spacing: 2px;
-            margin-bottom: 24px;
-        }
-
-        .plan-features {
-            list-style: none;
-            margin-bottom: 28px;
-            flex: 1;
-        }
-
-        .plan-features li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, .05);
-        }
-
-        .plan-features li::before {
-            content: '';
-            display: block;
-            width: 18px;
-            height: 18px;
-            background: var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/12px no-repeat;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .discount-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(245, 197, 24, .1);
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            padding: 6px 14px;
-            border-radius: 50px;
-            margin-bottom: 14px;
-        }
-
-        .price-from {
-            font-size: 13px;
-            color: #888;
-            text-decoration: line-through;
-            margin-bottom: 4px;
-        }
-
-        .price-main {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 52px;
-            color: var(--white);
-            line-height: 1;
-            margin-bottom: 4px;
-        }
-
-        .price-main span {
-            font-size: 24px;
-            vertical-align: super;
-        }
-
-        .price-installment {
-            font-size: 11px;
-            color: #aaa;
-            text-align: center;
-            margin: 8px 0 16px;
-            letter-spacing: .5px;
-        }
-
-        /* ── GUARANTEE ── */
-        .guarantee {
-            padding: 70px 6vw;
-            background: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .guarantee img {
-            width: 180px;
-            flex-shrink: 0;
-        }
-
-        .guarantee h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 42px;
-            margin-bottom: 16px;
-        }
-
-        .guarantee p {
-            color: #ccc;
-            line-height: 1.7;
-            font-size: 15px;
-        }
-
-        .guarantee p strong {
-            color: var(--white);
-        }
-
-        /* ── FOOTER ── */
-        footer {
-            background: #050505;
-            border-top: 1px solid #1a1a1a;
-            padding: 48px 6vw 32px;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 32px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #1a1a1a;
-            margin-bottom: 32px;
-        }
-
-        .footer-logo img {
-            width: 120px;
-        }
-
-        .footer-logo p {
-            font-size: 11px;
-            color: #666;
-            margin-top: 8px;
-        }
-
-        .footer-security {
-            text-align: center;
-        }
-
-        .footer-security .badge-label {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #888;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-
-        .footer-security img {
-            height: 50px;
-        }
-
-        .footer-payments .badge-label {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #888;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-
-        .payment-icons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            max-width: 260px;
-        }
-
-        .payment-icons img {
-            height: 30px;
-            border-radius: 4px;
-        }
-
-        .footer-disclaimer {
-            font-size: 11px;
-            color: #555;
-            line-height: 1.7;
-            border: 1px solid #1a1a1a;
-            border-radius: 8px;
-            padding: 16px 20px;
-            margin-bottom: 24px;
-        }
-
-        .piracy-badge {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            background: #111;
-            border-radius: 50px;
-            padding: 14px 24px;
-            max-width: 520px;
-            margin: 0 auto 32px;
-        }
-
-        .piracy-badge img {
-            width: 50px;
-        }
-
-        .piracy-badge p {
-            font-size: 13px;
-            color: #ccc;
-            line-height: 1.5;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            font-size: 12px;
-            color: #555;
-        }
-
-        .footer-bottom a {
-            color: #888;
-            text-decoration: underline;
-        }
-
-        .footer-brand {
-            text-align: center;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
-            letter-spacing: 4px;
-            color: #444;
-            margin-top: 24px;
-        }
-
-        /* ── FLOATING PURCHASE NOTIF ── */
-        .purchase-notif {
-            position: fixed;
-            bottom: 24px;
-            left: 24px;
-            background: #1db954;
-            color: #fff;
-            padding: 12px 18px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-            font-weight: 700;
-            z-index: 999;
-            animation: fadeInOut 4s ease forwards;
-            pointer-events: none;
-        }
-
-        .purchase-notif svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        @keyframes fadeInOut {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            15% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            75% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 900px) {
-            .hero-mockup {
-                display: none;
-            }
-
-            .hero-content {
-                max-width: 100%;
-            }
-
-            .stats {
-                flex-direction: column;
-                align-items: center;
-                gap: 16px;
-            }
-
-            .stat {
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, .2);
-                padding: 12px 0;
-                width: 100%;
-            }
-
-            .stat:last-child {
-                border-bottom: none;
-            }
-
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .plans-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .testi-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .guarantee {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-top {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .payment-icons {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .testi-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .platform-icons img {
-                height: 40px;
-                width: 40px;
-            }
-        }
-    </style>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '940312378971814');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=940312378971814&ev=PageView&noscript=1"/></noscript>
+<!-- FIM META PIXEL -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #e50914;
+    --red-dark: #b20710;
+    --gold: #f5c518;
+    --white: #ffffff;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --card: #1a0505;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    background: var(--red);
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .5px;
+  }
+  .topbar a { color: var(--white); font-weight: 900; text-decoration: underline; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 60px 6vw 80px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('MOCKUP-1.webp') center/cover no-repeat;
+    filter: brightness(.25) blur(2px);
+    transform: scale(1.04);
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg,rgba(0,0,0,.92) 45%,transparent 100%);
+    z-index: 1;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 680px; }
+  .logo-wrap { margin-bottom: 28px; }
+  .logo-wrap img { width: 160px; }
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: var(--red);
+    margin-top: 4px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 5.5vw, 72px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+  .hero h1 .highlight {
+    background: var(--red);
+    padding: 2px 10px;
+    display: inline;
+  }
+  .hero p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #ddd;
+    font-weight: 600;
+    max-width: 560px;
+    margin-bottom: 36px;
+  }
+  .hero-mockup {
+    position: absolute;
+    right: -2%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .hero-mockup img { width: 100%; }
+
+  /* ── CTA BUTTON ── */
+  .btn-cta {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    padding: 18px 48px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-cta:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .btn-cta.dark { background: #111; }
+  .btn-cta.dark:hover { background: #222; }
+
+  /* ── STATS BANNER ── */
+  .stats {
+    background: var(--red);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 28px 0;
+  }
+  .stat {
+    text-align: center;
+    padding: 0 48px;
+    border-right: 1px solid rgba(255,255,255,.3);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+  .stat-label { font-size: 13px; font-weight: 600; letter-spacing: .5px; opacity: .9; }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+  }
+  .section-title .tag {
+    background: var(--red);
+    padding: 2px 12px;
+    display: inline;
+  }
+
+  /* ── FILM STRIP MARQUEE ── */
+  .marquee-wrap { overflow: hidden; padding: 32px 0 8px; }
+  .marquee {
+    display: flex;
+    gap: 12px;
+    animation: scroll 35s linear infinite;
+    width: max-content;
+  }
+  .marquee img {
+    height: 200px;
+    width: 135px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  @keyframes scroll {
+    0%  { transform: translateX(0); }
+    100%{ transform: translateX(-50%); }
+  }
+
+  /* ── VIDEO SECTION ── */
+  .video-section {
+    padding: 60px 6vw;
+    text-align: center;
+    background: var(--dark);
+  }
+  .video-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #2a2a2a;
+  }
+  .video-wrapper iframe { width: 100%; height: 100%; border: none; }
+
+  /* ── CONTENT GRID ── */
+  .content-section { padding: 70px 6vw; }
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .content-card {
+    background: #0f1520;
+    border: 1px solid #1e2a3a;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform .2s, border-color .2s;
+  }
+  .content-card:hover { transform: translateY(-4px); border-color: var(--red); }
+  .content-card-imgs {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+  .content-card-imgs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s ease;
+  }
+  .content-card:hover .content-card-imgs img { transform: scale(1.05); }
+  .content-card-imgs img:not(:first-child) { display: none; }
+  .content-card-body { padding: 20px; text-align: center; }
+  .content-card-body h3 { font-size: 17px; font-weight: 800; margin-bottom: 10px; }
+  .content-card-body p { font-size: 13px; color: #aaa; line-height: 1.6; }
+
+  /* ── COMPARISON ── */
+  .comparison {
+    background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 100%);
+    padding: 70px 6vw;
+    text-align: center;
+  }
+  .comparison h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 4vw, 52px);
+    margin-bottom: 32px;
+    line-height: 1.2;
+  }
+  .platform-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .platform-icons img {
+    height: 52px;
+    width: 52px;
+    border-radius: 12px;
+    object-fit: contain;
+    background: rgba(0,0,0,.3);
+    padding: 4px;
+  }
+  .price-highlight {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(30px, 4vw, 52px);
+    margin-bottom: 32px;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { padding: 70px 6vw; background: var(--dark); }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .testi-card img {
+    width: 100%;
+    border-radius: 14px;
+    border: 2px solid #2a2a2a;
+    display: block;
+  }
+
+  /* ── PLANS ── */
+  .plans-section { padding: 70px 6vw; }
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto 32px;
+  }
+  .plan-anual-wrap {
+    max-width: 340px;
+    margin: 0 auto 0;
+  }
+  .plan-card {
+    background: var(--card);
+    border: 1px solid #3a0a0a;
+    border-radius: 12px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s, border-color .2s;
+  }
+  .plan-card:hover { transform: translateY(-4px); border-color: var(--red); }
+  .plan-card.highlight { border: 2px solid var(--red); box-shadow: 0 0 30px rgba(229,9,20,.2); }
+  .plan-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 4px;
+  }
+  .plan-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    color: var(--red);
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+  .plan-features { list-style: none; margin-bottom: 28px; flex: 1; }
+  .plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+  .plan-features li::before {
+    content: '';
+    display: block;
+    width: 18px; height: 18px;
+    background: var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/12px no-repeat;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .discount-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,197,24,.1);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+  }
+  .price-from {
+    font-size: 13px;
+    color: #888;
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .price-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-main span { font-size: 24px; vertical-align: super; }
+  .price-installment {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+    margin: 8px 0 16px;
+    letter-spacing: .5px;
+  }
+
+  /* ── GUARANTEE ── */
+  .guarantee {
+    padding: 70px 6vw;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .guarantee img { width: 180px; flex-shrink: 0; }
+  .guarantee h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    margin-bottom: 16px;
+  }
+  .guarantee p { color: #ccc; line-height: 1.7; font-size: 15px; }
+  .guarantee p strong { color: var(--white); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050505;
+    border-top: 1px solid #1a1a1a;
+    padding: 48px 6vw 32px;
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #1a1a1a;
+    margin-bottom: 32px;
+  }
+  .footer-logo img { width: 120px; }
+  .footer-logo p { font-size: 11px; color: #666; margin-top: 8px; }
+  .footer-security { text-align: center; }
+  .footer-security .badge-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .footer-security img { height: 50px; }
+  .footer-payments .badge-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .payment-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 260px;
+  }
+  .payment-icons img { height: 30px; border-radius: 4px; }
+  .footer-disclaimer {
+    font-size: 11px;
+    color: #555;
+    line-height: 1.7;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+  }
+  .piracy-badge {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #111;
+    border-radius: 50px;
+    padding: 14px 24px;
+    max-width: 520px;
+    margin: 0 auto 32px;
+  }
+  .piracy-badge img { width: 50px; }
+  .piracy-badge p { font-size: 13px; color: #ccc; line-height: 1.5; }
+  .footer-bottom {
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+  }
+  .footer-bottom a { color: #888; text-decoration: underline; }
+  .footer-brand {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: #444;
+    margin-top: 24px;
+  }
+
+  /* ── FLOATING PURCHASE NOTIF ── */
+  .purchase-notif {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    background: #1db954;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    z-index: 999;
+    animation: fadeInOut 4s ease forwards;
+    pointer-events: none;
+  }
+  .purchase-notif svg { width: 20px; height: 20px; }
+  @keyframes fadeInOut {
+    0%  { opacity: 0; transform: translateY(20px); }
+    15% { opacity: 1; transform: translateY(0); }
+    75% { opacity: 1; }
+    100%{ opacity: 0; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-mockup { display: none; }
+    .hero-content { max-width: 100%; }
+    .stats { flex-direction: column; align-items: center; gap: 16px; }
+    .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); padding: 12px 0; width: 100%; }
+    .stat:last-child { border-bottom: none; }
+    .content-grid { grid-template-columns: 1fr; }
+    .plans-grid { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr 1fr; }
+    .guarantee { flex-direction: column; text-align: center; }
+    .footer-top { flex-direction: column; align-items: center; text-align: center; }
+    .payment-icons { justify-content: center; }
+  }
+  @media (max-width: 600px) {
+    .testi-grid { grid-template-columns: 1fr; }
+    .platform-icons img { height: 40px; width: 40px; }
+  }
+</style>
 </head>
-
 <body>
 
-    <!-- TOPBAR -->
-    <div class="topbar">
-        Acesso liberado na mesma hora para pagamentos via <a href="#plans">PIX ou CARTÃO</a>
+<!-- TOPBAR -->
+<div class="topbar">
+  Acesso liberado na mesma hora para pagamentos via <a href="#plans">PIX ou CARTÃO</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="logo-wrap">
+      <!-- Logo placeholder – substitua por sua imagem de logo -->
+      <svg width="140" height="90" viewBox="0 0 140 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="70" cy="38" r="34" stroke="#e50914" stroke-width="3"/>
+        <polygon points="70,14 90,52 50,52" fill="#e50914"/>
+        <rect x="62" y="40" width="16" height="14" rx="2" fill="#c8a000"/>
+        <text x="70" y="84" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="13" letter-spacing="3" fill="#e50914">TOP STREAMING</text>
+      </svg>
+    </div>
+    <h1>
+      CONTEÚDO DE QUALIDADE,<br>
+      COM <span class="highlight">UM PREÇO QUE CABE</span><br>
+      <span class="highlight">NO SEU BOLSO!</span>
+    </h1>
+    <p>Mais de 4000 canais, 50 Mil Filmes/Séries incluindo as principais plataformas de streaming, por um preço que cabe no seu bolso! Com a TopStreaming, toda a sua diversão está em um só lugar.</p>
+    <a href="#plans" class="btn-cta">QUERO ASSINAR AGORA!</a>
+  </div>
+  <div class="hero-mockup">
+    <img src="assets/MOCKUP-1.webp" alt="Dispositivos Top Streaming" onerror="this.style.display='none'">
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">+4.000</div>
+    <div class="stat-label">canais abertos e fechados</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">+47.000</div>
+    <div class="stat-label">filmes e séries</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">+500</div>
+    <div class="stat-label">novelas</div>
+  </div>
+</div>
+
+<!-- MARQUEE FILMES -->
+<div style="background:var(--dark); padding: 50px 0 10px;">
+  <h2 class="section-title">O conteúdo de todos os aplicativos de streaming <span class="tag">em uma única plataforma</span></h2>
+  <div class="marquee-wrap">
+    <div class="marquee" id="marquee">
+      <img src="assets/guardioes.webp" alt="Guardiões da Galáxia" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/vingadores.webp" alt="Vingadores" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/shangchi.webp" alt="Shang-Chi" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/pentera.webp" alt="Pantera Negra" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/interestelar.webp" alt="Interestelar" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/flash.webp" alt="The Flash" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/batman.webp" alt="Batman" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/furiosa.webp" alt="Furiosa" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/venom.webp" alt="Venom" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/deadpool.webp" alt="Deadpool" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/oppenheimer.webp" alt="Oppenheimer" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/mufasa.webp" alt="Mufasa" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/topgun.webp" alt="Top Gun" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/sonic.webp" alt="Sonic" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/eternos.webp" alt="Eternos" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/veloses.webp" alt="Velozes & Furiosos" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <!-- Duplicado para loop suave -->
+      <img src="assets/guardioes.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/vingadores.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/shangchi.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/pentera.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/interestelar.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/flash.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/batman.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+      <img src="assets/furiosa.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
+    </div>
+  </div>
+</div>
+
+<!-- SÉRIES MARQUEE -->
+<div style="background:var(--dark); padding: 12px 0 50px;">
+  <div class="marquee-wrap">
+    <div class="marquee" style="animation-direction:reverse; animation-duration:28s;">
+      <img src="assets/round6.webp" alt="Round 6" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/peaky.webp" alt="Peaky Blinders" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/penguin.webp" alt="The Penguin" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/tulsa.webp" alt="Tulsa King" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/greys a.webp" alt="Grey's Anatomy" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/te boys.webp" alt="The Boys" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/twd.webp" alt="The Walking Dead" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/dark.webp" alt="Dark" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/got.webp" alt="Game of Thrones" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/stranger.webp" alt="Stranger Things" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/invasao.webp" alt="Invasão" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/loki.webp" alt="Loki" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <!-- Duplicado -->
+      <img src="assets/round6.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/peaky.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/penguin.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/tulsa.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/greys a.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+      <img src="assets/dark.webp" alt="" onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO SECTION -->
+<section class="video-section">
+  <h2 class="section-title">Assista o vídeo abaixo e conheça a <span class="tag">TOP STREAMING</span></h2>
+  <div class="video-wrapper">
+    <iframe src="https://player.vimeo.com/video/1047644315?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Conheça a TopStreaming"></iframe>
+  </div>
+  <br><br>
+  <a href="#plans" class="btn-cta">QUERO ASSINAR AGORA!</a>
+</section>
+
+<!-- CONTENT CATEGORIES -->
+<section class="content-section">
+  <h2 class="section-title" style="max-width:700px;margin:0 auto 40px;">Confira tudo o que você vai encontrar na Top Streaming</h2>
+  <div class="content-grid">
+    <div class="content-card">
+      <div class="content-card-imgs">
+        <img src="assets/FILMES.webp" alt="Filmes" onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text=Filmes'">
+        <img src="assets/deadpool.webp" alt="Deadpool" onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
+        <img src="assets/oppenheimer.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
+        <img src="assets/topgun.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
+      </div>
+      <div class="content-card-body">
+        <h3>+ 50.000 filmes</h3>
+        <p>Assista a um catálogo imenso de filmes de todos os gêneros. Descubra lançamentos e clássicos no conforto de sua casa.</p>
+      </div>
+    </div>
+    <div class="content-card">
+      <div class="content-card-imgs">
+        <img src="assets/SERIES.webp" alt="Séries" onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text=Séries'">
+        <img src="assets/dark.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
+        <img src="assets/te boys.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
+        <img src="assets/stranger.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
+      </div>
+      <div class="content-card-body">
+        <h3>Séries imperdíveis</h3>
+        <p>Acompanhe suas séries favoritas e encontre novas paixões. Temporadas completas e episódios atualizados para maratonar.</p>
+      </div>
+    </div>
+    <div class="content-card">
+      <div class="content-card-imgs">
+        <img src="assets/ESPORTES.webp" alt="Esportes" onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text=Esportes'">
+        <img src="assets/ESPORTES.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
+        <img src="assets/ESPORTES.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
+        <img src="assets/ESPORTES.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
+      </div>
+      <div class="content-card-body">
+        <h3>Esportes ao vivo</h3>
+        <p>Não perca um só lance! Assista a eventos esportivos ao vivo, incluindo futebol, basquete, e muito mais, diretamente na sua TV.</p>
+      </div>
+    </div>
+    <div class="content-card">
+      <div class="content-card-imgs">
+        <img src="assets/ADULTOS.webp" alt="Adultos" onerror="this.src='https://via.placeholder.com/200x100/1a0a0a/555?text=Adultos'">
+        <img src="assets/ADULTOS.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/1a0a0a/555?text='">
+        <img src="assets/ADULTOS.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/1a0a0a/555?text='">
+        <img src="assets/ADULTOS.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/1a0a0a/555?text='">
+      </div>
+      <div class="content-card-body">
+        <h3>Canais adultos em HD</h3>
+        <p>Conteúdo exclusivo para adultos com alta qualidade de imagem e variedade. Aproveite a programação completa e segura.</p>
+      </div>
+    </div>
+    <div class="content-card">
+      <div class="content-card-imgs">
+        <img src="assets/DESENHOS.webp" alt="Infantis" onerror="this.src='https://via.placeholder.com/200x100/0a1a0a/555?text=Infantil'">
+        <img src="assets/DESENHOS.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0a1a0a/555?text='">
+        <img src="assets/DESENHOS.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0a1a0a/555?text='">
+        <img src="assets/DESENHOS.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0a1a0a/555?text='">
+      </div>
+      <div class="content-card-body">
+        <h3>Canais infantis</h3>
+        <p>Diversão garantida para as crianças com canais dedicados, desenhos, filmes e programação educativa para todas as idades.</p>
+      </div>
+    </div>
+    <div class="content-card">
+      <div class="content-card-imgs">
+        <img src="assets/ANIMES.webp" alt="Animes" onerror="this.src='https://via.placeholder.com/200x100/0a0a1a/555?text=Animes'">
+        <img src="assets/ANIMES.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0a0a1a/555?text='">
+        <img src="assets/ANIMES.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0a0a1a/555?text='">
+        <img src="assets/ANIMES.webp" alt="" onerror="this.src='https://via.placeholder.com/200x100/0a0a1a/555?text='">
+      </div>
+      <div class="content-card-body">
+        <h3>Os melhores animes</h3>
+        <p>Para os fãs de anime, uma seleção de títulos populares e novidades. Episódios atualizados e qualidade HD para você maratonar.</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px;">
+    <a href="#plans" class="btn-cta">QUERO ASSINAR AGORA!</a>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison">
+  <h2>Se fosse para pagar todas as plataformas<br>você pagaria <u>R$537 por mês</u></h2>
+  <div class="platform-icons">
+    <img src="assets/netflix-menor.png" alt="Netflix" onerror="this.style.display='none'">
+    <img src="assets/prime-menor.png" alt="Prime Video" onerror="this.style.display='none'">
+    <img src="assets/max-hbo.png" alt="Max" onerror="this.style.display='none'">
+    <img src="assets/disney-menor.png" alt="Disney+" onerror="this.style.display='none'">
+    <img src="assets/premiere-menor.png" alt="Premiere" onerror="this.style.display='none'">
+    <img src="assets/paramout.png" alt="Paramount+" onerror="this.style.display='none'">
+    <img src="assets/apple-menor.png" alt="Apple TV" onerror="this.style.display='none'">
+    <img src="assets/crunch.png" alt="Crunchyroll" onerror="this.style.display='none'">
+    <img src="assets/E-MUITO-MAIS.webp" alt="E muito mais" onerror="this.style.display='none'">
+  </div>
+  <div class="price-highlight">Com a nossa plataforma você<br>pagará apenas <span style="text-decoration:underline;">R$29,90 mês!!</span></div>
+  <a href="#plans" class="btn-cta dark">QUERO ASSINAR AGORA!</a>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <h2 class="section-title">O que os clientes dizem sobre a <span class="tag">TOPSTREAMING</span></h2>
+  <div class="testi-grid">
+    <div class="testi-card"><img src="assets/WhatsApp-Image-2025-02-13-at-21.08.00.jpeg" alt="Depoimento"></div>
+    <div class="testi-card"><img src="assets/WhatsApp-Image-2025-02-13-at-21.08.01.jpeg" alt="Depoimento"></div>
+    <div class="testi-card"><img src="assets/WhatsApp-Image-2025-02-13-at-21.08.02.jpeg" alt="Depoimento"></div>
+    <div class="testi-card"><img src="assets/WhatsApp-Image-2025-02-13-at-21.08.02-1.jpeg" alt="Depoimento"></div>
+    <div class="testi-card"><img src="assets/WhatsApp-Image-2025-02-13-at-21.07.59.jpeg" alt="Depoimento"></div>
+    <div class="testi-card"><img src="assets/WhatsApp-Image-2025-02-13-at-21.07.59-1.jpeg" alt="Depoimento"></div>
+    <div class="testi-card"><img src="assets/IMG_20241029_162000.jpg" alt="Depoimento"></div>
+    <div class="testi-card"><img src="assets/IMG_20241029_161919.jpg" alt="Depoimento"></div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans-section" id="plans">
+  <h2 class="section-title">Escolha seu plano e assine já!</h2>
+  <div class="plans-grid">
+
+    <!-- MENSAL -->
+    <div class="plan-card">
+      <div class="plan-label">Plano Top Streaming</div>
+      <div class="plan-name">MENSAL</div>
+      <ul class="plan-features">
+        <li>Completo</li>
+        <li>Sem fidelidade</li>
+        <li>Assista em 2 telas simultâneas</li>
+        <li>+ de 60 mil conteúdos</li>
+        <li>Canais Adultos (opcional)</li>
+        <li>Qualidade SD/HD/FHD/4K</li>
+        <li>Assista na Smart TV</li>
+        <li>Assista no Smartphone</li>
+        <li>Assista na TV Box</li>
+        <li>Assista no computador</li>
+      </ul>
+      <div class="discount-badge">🎁 20% DE DESCONTO</div>
+      <div class="price-from">DE R$ 37,90 POR APENAS:</div>
+      <div class="price-main"><span>R$</span> 29,90</div>
+      <a href="https://pay.kirvano.com/64d2f1df-3435-4e01-bbdf-8b591841e0dd?aff=5c0f3420-db41-47d6-beaa-72c32bd26d88" class="btn-cta" style="width:100%;text-align:center;display:block;font-size:18px;padding:16px;" onclick="fbq('track','InitiateCheckout',{value:29.90,currency:'BRL',content_name:'Plano Mensal'})">QUERO ASSINAR AGORA!</a>
     </div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="logo-wrap">
-                <!-- Logo placeholder – substitua por sua imagem de logo -->
-                <svg width="140" height="90" viewBox="0 0 140 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="70" cy="38" r="34" stroke="#e50914" stroke-width="3" />
-                    <polygon points="70,14 90,52 50,52" fill="#e50914" />
-                    <rect x="62" y="40" width="16" height="14" rx="2" fill="#c8a000" />
-                    <text x="70" y="84" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="13"
-                        letter-spacing="3" fill="#e50914">TOP STREAMING</text>
-                </svg>
-            </div>
-            <h1>
-                CONTEÚDO DE QUALIDADE,<br>
-                COM <span class="highlight">UM PREÇO QUE CABE</span><br>
-                <span class="highlight">NO SEU BOLSO!</span>
-            </h1>
-            <p>Mais de 4000 canais, 50 Mil Filmes/Séries incluindo as principais plataformas de streaming, por um preço
-                que cabe no seu bolso! Com a TopStreaming, toda a sua diversão está em um só lugar.</p>
-            <a href="#plans" class="btn-cta">QUERO ASSINAR AGORA!</a>
-        </div>
-        <div class="hero-mockup">
-            <img src="assets/MOCKUP-1.webp" alt="Dispositivos Top Streaming" onerror="this.style.display='none'">
-        </div>
-    </section>
-
-    <!-- STATS -->
-    <div class="stats">
-        <div class="stat">
-            <div class="stat-num">+4.000</div>
-            <div class="stat-label">canais abertos e fechados</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num">+47.000</div>
-            <div class="stat-label">filmes e séries</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num">+500</div>
-            <div class="stat-label">novelas</div>
-        </div>
+    <!-- TRIMESTRAL -->
+    <div class="plan-card highlight">
+      <div class="plan-label">Plano Top Streaming</div>
+      <div class="plan-name">TRIMESTRAL</div>
+      <ul class="plan-features">
+        <li>Completo</li>
+        <li>Sem fidelidade</li>
+        <li>Assista em 2 telas simultâneas</li>
+        <li>+ de 60 mil conteúdos</li>
+        <li>Canais Adultos (opcional)</li>
+        <li>Qualidade SD/HD/FHD/4K</li>
+        <li>Assista na Smart TV</li>
+        <li>Assista no Smartphone</li>
+        <li>Assista na TV Box</li>
+        <li>Assista no computador</li>
+      </ul>
+      <div class="discount-badge">🎁 30% DE DESCONTO</div>
+      <div class="price-from">DE R$ 85,57 POR APENAS:</div>
+      <div class="price-main"><span>R$</span> 59,90</div>
+      <div class="price-installment">OU EM 3X DE R$21,94 NO CARTÃO DE CRÉDITO</div>
+      <a href="https://pay.kirvano.com/63204ff4-d01c-4afc-b9ed-7d085eb045f0?aff=5c0f3420-db41-47d6-beaa-72c32bd26d88" class="btn-cta" style="width:100%;text-align:center;display:block;font-size:18px;padding:16px;" onclick="fbq('track','InitiateCheckout',{value:59.90,currency:'BRL',content_name:'Plano Trimestral'})">QUERO ASSINAR AGORA!</a>
     </div>
 
-    <!-- MARQUEE FILMES -->
-    <div style="background:var(--dark); padding: 50px 0 10px;">
-        <h2 class="section-title">O conteúdo de todos os aplicativos de streaming <span class="tag">em uma única
-                plataforma</span></h2>
-        <div class="marquee-wrap">
-            <div class="marquee" id="marquee">
-                <img src="assets/guardioes.webp" alt="Guardiões da Galáxia"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/vingadores.webp" alt="Vingadores"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/shangchi.webp" alt="Shang-Chi"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/pentera.webp" alt="Pantera Negra"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/interestelar.webp" alt="Interestelar"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/flash.webp" alt="The Flash"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/batman.webp" alt="Batman"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/furiosa.webp" alt="Furiosa"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/venom.webp" alt="Venom"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/deadpool.webp" alt="Deadpool"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/oppenheimer.webp" alt="Oppenheimer"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/mufasa.webp" alt="Mufasa"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/topgun.webp" alt="Top Gun"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/sonic.webp" alt="Sonic"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/eternos.webp" alt="Eternos"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/veloses.webp" alt="Velozes & Furiosos"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <!-- Duplicado para loop suave -->
-                <img src="assets/guardioes.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/vingadores.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/shangchi.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/pentera.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/interestelar.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/flash.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/batman.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-                <img src="assets/furiosa.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Filme'">
-            </div>
-        </div>
+    <!-- SEMESTRAL -->
+    <div class="plan-card">
+      <div class="plan-label">Plano Top Streaming</div>
+      <div class="plan-name">SEMESTRAL</div>
+      <ul class="plan-features">
+        <li>Completo</li>
+        <li>Sem fidelidade</li>
+        <li>Assista em 2 telas simultâneas</li>
+        <li>+ de 60 mil conteúdos</li>
+        <li>Canais Adultos (opcional)</li>
+        <li>Qualidade SD/HD/FHD/4K</li>
+        <li>Assista na Smart TV</li>
+        <li>Assista no Smartphone</li>
+        <li>Assista na TV Box</li>
+        <li>Assista no computador</li>
+      </ul>
+      <div class="discount-badge">🎁 40% DE DESCONTO</div>
+      <div class="price-from">DE R$ 149,83 POR APENAS:</div>
+      <div class="price-main"><span>R$</span> 89,90</div>
+      <div class="price-installment">OU EM 6X DE R$17,04 NO CARTÃO DE CRÉDITO</div>
+      <a href="https://pay.kirvano.com/2fa263d7-8ab5-47ca-bed8-785dbda2d330?aff=5c0f3420-db41-47d6-beaa-72c32bd26d88" class="btn-cta" style="width:100%;text-align:center;display:block;font-size:18px;padding:16px;" onclick="fbq('track','InitiateCheckout',{value:89.90,currency:'BRL',content_name:'Plano Semestral'})">QUERO ASSINAR AGORA!</a>
     </div>
+  </div>
 
-    <!-- SÉRIES MARQUEE -->
-    <div style="background:var(--dark); padding: 12px 0 50px;">
-        <div class="marquee-wrap">
-            <div class="marquee" style="animation-direction:reverse; animation-duration:28s;">
-                <img src="assets/round6.webp" alt="Round 6"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/peaky.webp" alt="Peaky Blinders"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/penguin.webp" alt="The Penguin"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/tulsa.webp" alt="Tulsa King"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/greys a.webp" alt="Grey's Anatomy"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/te boys.webp" alt="The Boys"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/twd.webp" alt="The Walking Dead"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/dark.webp" alt="Dark"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/got.webp" alt="Game of Thrones"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/stranger.webp" alt="Stranger Things"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/invasao.webp" alt="Invasão"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/loki.webp" alt="Loki"
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <!-- Duplicado -->
-                <img src="assets/round6.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/peaky.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/penguin.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/tulsa.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/greys a.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-                <img src="assets/dark.webp" alt=""
-                    onerror="this.src='https://via.placeholder.com/135x200/1a1a1a/666?text=Série'">
-            </div>
-        </div>
+  <!-- ANUAL -->
+  <div class="plan-anual-wrap">
+    <div class="plan-card" style="background:#f0f0f0;color:#111;border-color:#ddd;">
+      <div class="plan-label" style="color:#555;">Plano Top Streaming</div>
+      <div class="plan-name">ANUAL</div>
+      <ul class="plan-features" style="color:#333;">
+        <li style="border-color:#ddd;">Completo</li>
+        <li style="border-color:#ddd;">Sem fidelidade</li>
+        <li style="border-color:#ddd;">Assista em 2 telas simultâneas</li>
+        <li style="border-color:#ddd;">+ de 60 mil conteúdos</li>
+        <li style="border-color:#ddd;">Canais Adultos (opcional)</li>
+        <li style="border-color:#ddd;">Qualidade SD/HD/FHD/4K</li>
+        <li style="border-color:#ddd;">Assista na Smart TV</li>
+        <li style="border-color:#ddd;">Assista no Smartphone</li>
+        <li style="border-color:#ddd;">Assista na TV Box</li>
+        <li style="border-color:#ddd;">Assista no computador</li>
+      </ul>
+      <div class="discount-badge">🎁 50% DE DESCONTO</div>
+      <div class="price-from" style="color:#888;">DE R$ 299,80 POR APENAS:</div>
+      <div class="price-main" style="color:#111;"><span>R$</span> 149,90</div>
+      <div class="price-installment" style="color:#777;">OU EM 12X DE R$15,36 NO CARTÃO DE CRÉDITO</div>
+      <a href="https://pay.kirvano.com/5630b4f0-09c8-476b-8739-4bef06cad2de?aff=5c0f3420-db41-47d6-beaa-72c32bd26d88" class="btn-cta" style="width:100%;text-align:center;display:block;font-size:18px;padding:16px;" onclick="fbq('track','InitiateCheckout',{value:149.90,currency:'BRL',content_name:'Plano Anual'})">QUERO ASSINAR AGORA!</a>
     </div>
+  </div>
+</section>
 
-    <!-- VIDEO SECTION -->
-    <section class="video-section">
-        <h2 class="section-title">Assista o vídeo abaixo e conheça a <span class="tag">TOP STREAMING</span></h2>
-        <div class="video-wrapper">
-            <iframe src="https://player.vimeo.com/video/1047644315?badge=0&autopause=0&player_id=0&app_id=58479"
-                frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-                title="Conheça a TopStreaming"></iframe>
-        </div>
-        <br><br>
-        <a href="#plans" class="btn-cta">QUERO ASSINAR AGORA!</a>
-    </section>
-
-    <!-- CONTENT CATEGORIES -->
-    <section class="content-section">
-        <h2 class="section-title" style="max-width:700px;margin:0 auto 40px;">Confira tudo o que você vai encontrar na
-            Top Streaming</h2>
-        <div class="content-grid">
-            <div class="content-card">
-                <div class="content-card-imgs">
-                    <img src="assets/FILMES.webp" alt="Filmes"
-                        onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text=Filmes'">
-                    <img src="assets/deadpool.webp" alt="Deadpool"
-                        onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
-                    <img src="assets/oppenheimer.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
-                    <img src="assets/topgun.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
-                </div>
-                <div class="content-card-body">
-                    <h3>+ 50.000 filmes</h3>
-                    <p>Assista a um catálogo imenso de filmes de todos os gêneros. Descubra lançamentos e clássicos no
-                        conforto de sua casa.</p>
-                </div>
-            </div>
-            <div class="content-card">
-                <div class="content-card-imgs">
-                    <img src="assets/SERIES.webp" alt="Séries"
-                        onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text=Séries'">
-                    <img src="assets/dark.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
-                    <img src="assets/te boys.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
-                    <img src="assets/stranger.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
-                </div>
-                <div class="content-card-body">
-                    <h3>Séries imperdíveis</h3>
-                    <p>Acompanhe suas séries favoritas e encontre novas paixões. Temporadas completas e episódios
-                        atualizados para maratonar.</p>
-                </div>
-            </div>
-            <div class="content-card">
-                <div class="content-card-imgs">
-                    <img src="assets/ESPORTES.webp" alt="Esportes"
-                        onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text=Esportes'">
-                    <img src="assets/ESPORTES.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
-                    <img src="assets/ESPORTES.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
-                    <img src="assets/ESPORTES.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0f1520/555?text='">
-                </div>
-                <div class="content-card-body">
-                    <h3>Esportes ao vivo</h3>
-                    <p>Não perca um só lance! Assista a eventos esportivos ao vivo, incluindo futebol, basquete, e muito
-                        mais, diretamente na sua TV.</p>
-                </div>
-            </div>
-            <div class="content-card">
-                <div class="content-card-imgs">
-                    <img src="assets/ADULTOS.webp" alt="Adultos"
-                        onerror="this.src='https://via.placeholder.com/200x100/1a0a0a/555?text=Adultos'">
-                    <img src="assets/ADULTOS.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/1a0a0a/555?text='">
-                    <img src="assets/ADULTOS.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/1a0a0a/555?text='">
-                    <img src="assets/ADULTOS.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/1a0a0a/555?text='">
-                </div>
-                <div class="content-card-body">
-                    <h3>Canais adultos em HD</h3>
-                    <p>Conteúdo exclusivo para adultos com alta qualidade de imagem e variedade. Aproveite a programação
-                        completa e segura.</p>
-                </div>
-            </div>
-            <div class="content-card">
-                <div class="content-card-imgs">
-                    <img src="assets/DESENHOS.webp" alt="Infantis"
-                        onerror="this.src='https://via.placeholder.com/200x100/0a1a0a/555?text=Infantil'">
-                    <img src="assets/DESENHOS.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0a1a0a/555?text='">
-                    <img src="assets/DESENHOS.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0a1a0a/555?text='">
-                    <img src="assets/DESENHOS.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0a1a0a/555?text='">
-                </div>
-                <div class="content-card-body">
-                    <h3>Canais infantis</h3>
-                    <p>Diversão garantida para as crianças com canais dedicados, desenhos, filmes e programação
-                        educativa para todas as idades.</p>
-                </div>
-            </div>
-            <div class="content-card">
-                <div class="content-card-imgs">
-                    <img src="assets/ANIMES.webp" alt="Animes"
-                        onerror="this.src='https://via.placeholder.com/200x100/0a0a1a/555?text=Animes'">
-                    <img src="assets/ANIMES.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0a0a1a/555?text='">
-                    <img src="assets/ANIMES.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0a0a1a/555?text='">
-                    <img src="assets/ANIMES.webp" alt=""
-                        onerror="this.src='https://via.placeholder.com/200x100/0a0a1a/555?text='">
-                </div>
-                <div class="content-card-body">
-                    <h3>Os melhores animes</h3>
-                    <p>Para os fãs de anime, uma seleção de títulos populares e novidades. Episódios atualizados e
-                        qualidade HD para você maratonar.</p>
-                </div>
-            </div>
-        </div>
-        <div style="text-align:center;margin-top:40px;">
-            <a href="#plans" class="btn-cta">QUERO ASSINAR AGORA!</a>
-        </div>
-    </section>
-
-    <!-- COMPARISON -->
-    <section class="comparison">
-        <h2>Se fosse para pagar todas as plataformas<br>você pagaria <u>R$537 por mês</u></h2>
-        <div class="platform-icons">
-            <img src="assets/netflix-menor.png" alt="Netflix" onerror="this.style.display='none'">
-            <img src="assets/prime-menor.png" alt="Prime Video" onerror="this.style.display='none'">
-            <img src="assets/max-hbo.png" alt="Max" onerror="this.style.display='none'">
-            <img src="assets/disney-menor.png" alt="Disney+" onerror="this.style.display='none'">
-            <img src="assets/premiere-menor.png" alt="Premiere" onerror="this.style.display='none'">
-            <img src="assets/paramout.png" alt="Paramount+" onerror="this.style.display='none'">
-            <img src="assets/apple-menor.png" alt="Apple TV" onerror="this.style.display='none'">
-            <img src="assets/crunch.png" alt="Crunchyroll" onerror="this.style.display='none'">
-            <img src="assets/E-MUITO-MAIS.webp" alt="E muito mais" onerror="this.style.display='none'">
-        </div>
-        <div class="price-highlight">Com a nossa plataforma você<br>pagará apenas <span
-                style="text-decoration:underline;">R$29,90 mês!!</span></div>
-        <a href="#plans" class="btn-cta dark">QUERO ASSINAR AGORA!</a>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section class="testimonials">
-        <h2 class="section-title">O que os clientes dizem sobre a <span class="tag">TOPSTREAMING</span></h2>
-        <div class="testi-grid">
-            <div class="testi-card"><img src="assets/WhatsApp-Image-2025-02-13-at-21.08.00.jpeg" alt="Depoimento"></div>
-            <div class="testi-card"><img src="assets/WhatsApp-Image-2025-02-13-at-21.08.01.jpeg" alt="Depoimento"></div>
-            <div class="testi-card"><img src="assets/WhatsApp-Image-2025-02-13-at-21.08.02.jpeg" alt="Depoimento"></div>
-            <div class="testi-card"><img src="assets/WhatsApp-Image-2025-02-13-at-21.08.02-1.jpeg" alt="Depoimento">
-            </div>
-            <div class="testi-card"><img src="assets/WhatsApp-Image-2025-02-13-at-21.07.59.jpeg" alt="Depoimento"></div>
-            <div class="testi-card"><img src="assets/WhatsApp-Image-2025-02-13-at-21.07.59-1.jpeg" alt="Depoimento">
-            </div>
-            <div class="testi-card"><img src="assets/IMG_20241029_162000.jpg" alt="Depoimento"></div>
-            <div class="testi-card"><img src="assets/IMG_20241029_161919.jpg" alt="Depoimento"></div>
-        </div>
-    </section>
-
-    <!-- PLANS -->
-    <section class="plans-section" id="plans">
-        <h2 class="section-title">Escolha seu plano e assine já!</h2>
-        <div class="plans-grid">
-
-            <!-- MENSAL -->
-            <div class="plan-card">
-                <div class="plan-label">Plano Top Streaming</div>
-                <div class="plan-name">MENSAL</div>
-                <ul class="plan-features">
-                    <li>Completo</li>
-                    <li>Sem fidelidade</li>
-                    <li>Assista em 2 telas simultâneas</li>
-                    <li>+ de 60 mil conteúdos</li>
-                    <li>Canais Adultos (opcional)</li>
-                    <li>Qualidade SD/HD/FHD/4K</li>
-                    <li>Assista na Smart TV</li>
-                    <li>Assista no Smartphone</li>
-                    <li>Assista na TV Box</li>
-                    <li>Assista no computador</li>
-                </ul>
-                <div class="discount-badge">🎁 20% DE DESCONTO</div>
-                <div class="price-from">DE R$ 37,90 POR APENAS:</div>
-                <div class="price-main"><span>R$</span> 29,90</div>
-                <a href="https://pay.kirvano.com/64d2f1df-3435-4e01-bbdf-8b591841e0dd?aff=5c0f3420-db41-47d6-beaa-72c32bd26d88"
-                    class="btn-cta"
-                    style="width:100%;text-align:center;display:block;font-size:18px;padding:16px;">QUERO ASSINAR
-                    AGORA!</a>
-            </div>
-
-            <!-- TRIMESTRAL -->
-            <div class="plan-card highlight">
-                <div class="plan-label">Plano Top Streaming</div>
-                <div class="plan-name">TRIMESTRAL</div>
-                <ul class="plan-features">
-                    <li>Completo</li>
-                    <li>Sem fidelidade</li>
-                    <li>Assista em 2 telas simultâneas</li>
-                    <li>+ de 60 mil conteúdos</li>
-                    <li>Canais Adultos (opcional)</li>
-                    <li>Qualidade SD/HD/FHD/4K</li>
-                    <li>Assista na Smart TV</li>
-                    <li>Assista no Smartphone</li>
-                    <li>Assista na TV Box</li>
-                    <li>Assista no computador</li>
-                </ul>
-                <div class="discount-badge">🎁 30% DE DESCONTO</div>
-                <div class="price-from">DE R$ 85,57 POR APENAS:</div>
-                <div class="price-main"><span>R$</span> 59,90</div>
-                <div class="price-installment">OU EM 3X DE R$21,94 NO CARTÃO DE CRÉDITO</div>
-                <a href="https://pay.kirvano.com/63204ff4-d01c-4afc-b9ed-7d085eb045f0?aff=5c0f3420-db41-47d6-beaa-72c32bd26d88"
-                    class="btn-cta"
-                    style="width:100%;text-align:center;display:block;font-size:18px;padding:16px;">QUERO ASSINAR
-                    AGORA!</a>
-            </div>
-
-            <!-- SEMESTRAL -->
-            <div class="plan-card">
-                <div class="plan-label">Plano Top Streaming</div>
-                <div class="plan-name">SEMESTRAL</div>
-                <ul class="plan-features">
-                    <li>Completo</li>
-                    <li>Sem fidelidade</li>
-                    <li>Assista em 2 telas simultâneas</li>
-                    <li>+ de 60 mil conteúdos</li>
-                    <li>Canais Adultos (opcional)</li>
-                    <li>Qualidade SD/HD/FHD/4K</li>
-                    <li>Assista na Smart TV</li>
-                    <li>Assista no Smartphone</li>
-                    <li>Assista na TV Box</li>
-                    <li>Assista no computador</li>
-                </ul>
-                <div class="discount-badge">🎁 40% DE DESCONTO</div>
-                <div class="price-from">DE R$ 149,83 POR APENAS:</div>
-                <div class="price-main"><span>R$</span> 89,90</div>
-                <div class="price-installment">OU EM 6X DE R$17,04 NO CARTÃO DE CRÉDITO</div>
-                <a href="https://pay.kirvano.com/2fa263d7-8ab5-47ca-bed8-785dbda2d330?aff=5c0f3420-db41-47d6-beaa-72c32bd26d88"
-                    class="btn-cta"
-                    style="width:100%;text-align:center;display:block;font-size:18px;padding:16px;">QUERO ASSINAR
-                    AGORA!</a>
-            </div>
-        </div>
-
-        <!-- ANUAL -->
-        <div class="plan-anual-wrap">
-            <div class="plan-card" style="background:#f0f0f0;color:#111;border-color:#ddd;">
-                <div class="plan-label" style="color:#555;">Plano Top Streaming</div>
-                <div class="plan-name">ANUAL</div>
-                <ul class="plan-features" style="color:#333;">
-                    <li style="border-color:#ddd;">Completo</li>
-                    <li style="border-color:#ddd;">Sem fidelidade</li>
-                    <li style="border-color:#ddd;">Assista em 2 telas simultâneas</li>
-                    <li style="border-color:#ddd;">+ de 60 mil conteúdos</li>
-                    <li style="border-color:#ddd;">Canais Adultos (opcional)</li>
-                    <li style="border-color:#ddd;">Qualidade SD/HD/FHD/4K</li>
-                    <li style="border-color:#ddd;">Assista na Smart TV</li>
-                    <li style="border-color:#ddd;">Assista no Smartphone</li>
-                    <li style="border-color:#ddd;">Assista na TV Box</li>
-                    <li style="border-color:#ddd;">Assista no computador</li>
-                </ul>
-                <div class="discount-badge">🎁 50% DE DESCONTO</div>
-                <div class="price-from" style="color:#888;">DE R$ 299,80 POR APENAS:</div>
-                <div class="price-main" style="color:#111;"><span>R$</span> 149,90</div>
-                <div class="price-installment" style="color:#777;">OU EM 12X DE R$15,36 NO CARTÃO DE CRÉDITO</div>
-                <a href="https://pay.kirvano.com/5630b4f0-09c8-476b-8739-4bef06cad2de?aff=5c0f3420-db41-47d6-beaa-72c32bd26d88"
-                    class="btn-cta"
-                    style="width:100%;text-align:center;display:block;font-size:18px;padding:16px;">QUERO ASSINAR
-                    AGORA!</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- GUARANTEE -->
-    <div style="background:var(--dark);padding:70px 6vw;">
-        <div style="display:flex;align-items:center;gap:60px;max-width:860px;margin:0 auto;flex-wrap:wrap;">
-            <img src="assets/GARANTIA.png" alt="Garantia 7 dias" style="width:180px;flex-shrink:0;"
-                onerror="this.style.display='none'">
-            <div>
-                <h2 style="font-family:'Bebas Neue',sans-serif;font-size:42px;margin-bottom:16px;">Você não corre nenhum
-                    risco!</h2>
-                <p style="font-weight:700;font-size:16px;margin-bottom:12px;">É simples, ou você fica feliz com o
-                    conteúdo, ou você fica na tranquilidade com 100% do seu dinheiro de volta.</p>
-                <p style="color:#ccc;line-height:1.7;">Se, dentro de 7 dias, por qualquer motivo você decidir não
-                    continuar com a TOPSTREAMING, basta enviar um email e nós faremos o seu reembolso sem nenhuma
-                    burocracia.</p>
-                <br>
-                <a href="#plans" class="btn-cta">QUERO ASSINAR AGORA!</a>
-            </div>
-        </div>
+<!-- GUARANTEE -->
+<div style="background:var(--dark);padding:70px 6vw;">
+  <div style="display:flex;align-items:center;gap:60px;max-width:860px;margin:0 auto;flex-wrap:wrap;">
+    <img src="assets/GARANTIA.png" alt="Garantia 7 dias" style="width:180px;flex-shrink:0;" onerror="this.style.display='none'">
+    <div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:42px;margin-bottom:16px;">Você não corre nenhum risco!</h2>
+      <p style="font-weight:700;font-size:16px;margin-bottom:12px;">É simples, ou você fica feliz com o conteúdo, ou você fica na tranquilidade com 100% do seu dinheiro de volta.</p>
+      <p style="color:#ccc;line-height:1.7;">Se, dentro de 7 dias, por qualquer motivo você decidir não continuar com a TOPSTREAMING, basta enviar um email e nós faremos o seu reembolso sem nenhuma burocracia.</p>
+      <br>
+      <a href="#plans" class="btn-cta">QUERO ASSINAR AGORA!</a>
     </div>
+  </div>
+</div>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-top">
-            <div class="footer-logo">
-                <svg width="110" height="70" viewBox="0 0 140 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="70" cy="38" r="34" stroke="#e50914" stroke-width="3" />
-                    <polygon points="70,14 90,52 50,52" fill="#e50914" />
-                    <rect x="62" y="40" width="16" height="14" rx="2" fill="#c8a000" />
-                    <text x="70" y="84" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="13"
-                        letter-spacing="3" fill="#e50914">TOP STREAMING</text>
-                </svg>
-            </div>
-            <div class="footer-security">
-                <div class="badge-label">Certificado de Segurança</div>
-                <img src="assets/reclame-aqui.webp" alt="Reclame Aqui" onerror="this.style.display='none'">
-            </div>
-            <div class="footer-payments">
-                <div class="badge-label">Formas de Pagamento</div>
-                <div class="payment-icons">
-                    <img src="assets/FORMA-DE-PAGAMENTO.webp" alt="Formas de pagamento"
-                        onerror="this.style.display='none'">
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-disclaimer">
-            <p>Esta página não tem qualquer vínculo com o Facebook S/A e suas empresas, apenas usamos a plataforma para
-                promover os nossos produtos. Ao sair da plataforma toda responsabilidade sobre produtos vendidos e
-                ofertados é de inteira responsabilidade da nossa empresa, bem como se houver quaisquer eventualidades
-                legais.</p>
-            <br>
-            <p>Declaramos que o Facebook S/A não tem qualquer vínculo de associação em processos civeis ou criminais.
-            </p>
-            <br>
-            <p>Não compre produtos piratas, não vendemos em marketplaces como: Mercado Livre, Shopee, Aliexpress,
-                Facebook, Olx etc. Não damos suporte a produtos comprados nestes canais.</p>
-        </div>
-
-        <div class="piracy-badge">
-            <svg viewBox="0 0 60 60" width="50" height="50">
-                <circle cx="30" cy="30" r="28" fill="#111" stroke="#e50914" stroke-width="2" />
-                <text x="30" y="22" text-anchor="middle" font-size="20" fill="white">☠️</text>
-                <text x="30" y="38" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#e50914"
-                    font-weight="bold">NÃO À</text>
-                <text x="30" y="48" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#e50914"
-                    font-weight="bold">PIRATARIA</text>
-            </svg>
-            <p>A venda da plataforma TopStreaming em qualquer outro site é proibida. Não compre falsificações e garanta
-                um produto de qualidade comprando APENAS através do nosso site oficial.</p>
-        </div>
-
-        <div class="footer-bottom">
-            <p>TopStreaming © 2026. Todos os direitos reservados.</p>
-            <p><a href="#">Termos de Uso</a> | <a href="#">Políticas de Privacidade</a></p>
-        </div>
-
-        <div class="footer-brand">Método100IA</div>
-    </footer>
-
-    <!-- FLOATING PURCHASE NOTIFICATIONS -->
-    <div id="purchase-notif" class="purchase-notif" style="display:none;">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-        </svg>
-        <span id="notif-text">Valdir acabou de comprar</span>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">
+      <svg width="110" height="70" viewBox="0 0 140 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="70" cy="38" r="34" stroke="#e50914" stroke-width="3"/>
+        <polygon points="70,14 90,52 50,52" fill="#e50914"/>
+        <rect x="62" y="40" width="16" height="14" rx="2" fill="#c8a000"/>
+        <text x="70" y="84" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="13" letter-spacing="3" fill="#e50914">TOP STREAMING</text>
+      </svg>
     </div>
+    <div class="footer-security">
+      <div class="badge-label">Certificado de Segurança</div>
+      <img src="assets/reclame-aqui.webp" alt="Reclame Aqui" onerror="this.style.display='none'">
+    </div>
+    <div class="footer-payments">
+      <div class="badge-label">Formas de Pagamento</div>
+      <div class="payment-icons">
+        <img src="assets/FORMA-DE-PAGAMENTO.webp" alt="Formas de pagamento" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
 
-    <script>
-        const names = ['Mariana', 'Valdir', 'Vanderlei', 'Camila', 'Alan', 'Pedro', 'Fernanda', 'Lucas', 'Beatriz', 'Rafael', 'Julia', 'Carlos'];
-        let i = 0;
-        function showNotif() {
-            const el = document.getElementById('purchase-notif');
-            const txt = document.getElementById('notif-text');
-            txt.textContent = names[i % names.length] + ' acabou de comprar';
-            i++;
-            el.style.display = 'flex';
-            el.style.animation = 'none';
-            void el.offsetWidth;
-            el.style.animation = 'fadeInOut 4s ease forwards';
-            setTimeout(() => { el.style.display = 'none'; }, 4100);
-        }
-        setTimeout(() => {
-            showNotif();
-            setInterval(showNotif, 8000);
-        }, 3000);
-    </script>
+  <div class="footer-disclaimer">
+    <p>Esta página não tem qualquer vínculo com o Facebook S/A e suas empresas, apenas usamos a plataforma para promover os nossos produtos. Ao sair da plataforma toda responsabilidade sobre produtos vendidos e ofertados é de inteira responsabilidade da nossa empresa, bem como se houver quaisquer eventualidades legais.</p>
+    <br>
+    <p>Declaramos que o Facebook S/A não tem qualquer vínculo de associação em processos civeis ou criminais.</p>
+    <br>
+    <p>Não compre produtos piratas, não vendemos em marketplaces como: Mercado Livre, Shopee, Aliexpress, Facebook, Olx etc. Não damos suporte a produtos comprados nestes canais.</p>
+  </div>
+
+  <div class="piracy-badge">
+    <svg viewBox="0 0 60 60" width="50" height="50">
+      <circle cx="30" cy="30" r="28" fill="#111" stroke="#e50914" stroke-width="2"/>
+      <text x="30" y="22" text-anchor="middle" font-size="20" fill="white">☠️</text>
+      <text x="30" y="38" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#e50914" font-weight="bold">NÃO À</text>
+      <text x="30" y="48" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#e50914" font-weight="bold">PIRATARIA</text>
+    </svg>
+    <p>A venda da plataforma TopStreaming em qualquer outro site é proibida. Não compre falsificações e garanta um produto de qualidade comprando APENAS através do nosso site oficial.</p>
+  </div>
+
+  <div class="footer-bottom">
+    <p>TopStreaming © 2026. Todos os direitos reservados.</p>
+    <p><a href="#">Termos de Uso</a> | <a href="#">Políticas de Privacidade</a></p>
+  </div>
+
+  <div class="footer-brand">Método100IA</div>
+</footer>
+
+<!-- FLOATING PURCHASE NOTIFICATIONS -->
+<div id="purchase-notif" class="purchase-notif" style="display:none;">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+  <span id="notif-text">Valdir acabou de comprar</span>
+</div>
+
+<script>
+  const names = ['Mariana','Valdir','Vanderlei','Camila','Alan','Pedro','Fernanda','Lucas','Beatriz','Rafael','Julia','Carlos'];
+  let i = 0;
+  function showNotif() {
+    const el = document.getElementById('purchase-notif');
+    const txt = document.getElementById('notif-text');
+    txt.textContent = names[i % names.length] + ' acabou de comprar';
+    i++;
+    el.style.display = 'flex';
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = 'fadeInOut 4s ease forwards';
+    setTimeout(() => { el.style.display = 'none'; }, 4100);
+  }
+  setTimeout(() => {
+    showNotif();
+    setInterval(showNotif, 8000);
+  }, 3000);
+</script>
 </body>
-
 </html>
